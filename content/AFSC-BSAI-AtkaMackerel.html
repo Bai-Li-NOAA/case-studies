@@ -246,26 +246,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"dplyr"</span>, <span class="st">"tidyr"</span>, <span class="st">"ggplot2"</span>, <span class="st">"remotes"</span>, <span class="st">"here"</span>, <span class="st">"TMB"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Install packages not yet installed</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>installed_packages <span class="ot">&lt;-</span> packages <span class="sc">%in%</span> <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">any</span>(installed_packages <span class="sc">==</span> <span class="cn">FALSE</span>)) {</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(packages[<span class="sc">!</span>installed_packages], <span class="at">repos =</span> <span class="st">"http://cran.us.r-project.org"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># # Install packages not yet installed</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># installed_packages &lt;- packages %in% rownames(installed.packages())</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># if (any(installed_packages == FALSE)) {</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   install.packages(packages[!installed_packages], repos = "http://cran.us.r-project.org")</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Load packages</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">invisible</span>(<span class="fu">lapply</span>(packages, library, <span class="at">character.only =</span> <span class="cn">TRUE</span>))</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(FIMS)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(TMB)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(TMBhelper)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="do">## devtools::install_github('afsc-assessments/GOApollock', ref='v0.1.2')</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="do">## library(GOApollock)</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>())</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(TMBhelper)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="do">## devtools::install_github('afsc-assessments/GOApollock', ref='v0.1.2')</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="do">## library(GOApollock)</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>())</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>R_version <span class="ot">&lt;-</span> version<span class="sc">$</span>version.string</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>TMB_version <span class="ot">&lt;-</span> <span class="fu">packageDescription</span>(<span class="st">"TMB"</span>)<span class="sc">$</span>Version</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>FIMS_commit <span class="ot">&lt;-</span> <span class="fu">substr</span>(<span class="fu">packageDescription</span>(<span class="st">"FIMS"</span>)<span class="sc">$</span>GithubSHA1, <span class="dv">1</span>, <span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>R_version <span class="ot">&lt;-</span> version<span class="sc">$</span>version.string</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>TMB_version <span class="ot">&lt;-</span> <span class="fu">packageDescription</span>(<span class="st">"TMB"</span>)<span class="sc">$</span>Version</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>FIMS_commit <span class="ot">&lt;-</span> <span class="fu">substr</span>(<span class="fu">packageDescription</span>(<span class="st">"FIMS"</span>)<span class="sc">$</span>GithubSHA1, <span class="dv">1</span>, <span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <ul>
