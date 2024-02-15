@@ -1,0 +1,21 @@
+Type: bookdown project
+Title: fims-case-studies
+Description: Fisheries Integrated Modeling System (FIMS) test cases, based on regional assessments, to illustrate use of FIMS.
+Depends:
+    rmarkdown,
+    knitr,
+    jsonlite,
+    dplyr,
+    tidyr,
+    ggplot2,
+    remotes,
+    here,
+    TMB,
+    reshape2
+Imports:
+    TMBhelper,
+    FIMS
+Remotes:
+    kaskr/TMB_contrib_R/TMBhelper,
+    NOAA-FIMS/FIMS
+    

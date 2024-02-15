@@ -21,12 +21,29 @@ and start the qmd file with a level header `# `, but if using the default title 
 ## Add a chunk of code describing your setup
 
 Case study files should include:
+
 * R version
 * TMB version
 * FIMS commit
 * Name of your stock
 * Name of your region
 * Name of the analyst
+
+Please ensure that both the [`DESCRIPTION`](https://github.com/NOAA-FIMS/case-studies/blob/main/DESCRIPTION) and [`.github/workflows/render-and-publish.yml`](https://github.com/NOAA-FIMS/case-studies/blob/main/.github/workflows/render-and-publish.yml#L20C7-L21C124) files are updated if the case study requires the installation of additional R packages.
+
+Please use the following code to load the required packages within each case study:
+```{r}
+# Names of required CRAN packages
+packages <- c("TMB")
+
+# Load packages
+invisible(lapply(packages, library, character.only = TRUE))
+
+library(FIMS)
+library(TMBhelper)
+```
+
+To render the bookdown product locally, please run devtools::install_deps() to install all dependencies listed in the [`DESCRIPTION`](https://github.com/NOAA-FIMS/case-studies/blob/main/DESCRIPTION) file. 
 
 ## Add a bulleted list and script describing simplifications you had to make
 
