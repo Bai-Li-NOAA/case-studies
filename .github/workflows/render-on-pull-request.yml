@@ -1,8 +1,8 @@
 on:
-  push:
+  pull_request:
     branches: main
 
-name: Render and Publish
+name: Render on pull request
 
 jobs:
   build-deploy:
@@ -30,9 +30,12 @@ jobs:
       
       # add software dependencies here
 
-      - name: Publish to GitHub Pages (and render)
+      - name: Render GitHub Pages 
         uses: quarto-dev/quarto-actions/publish@v2
         with:
-          target: gh-pages
+          target: gh-pages-on-pull-request
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # this secret is always available for github actions
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
